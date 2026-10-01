@@ -24,8 +24,8 @@ export class Hud {
       <div class="center-msg" id="msg"></div>
       <div class="sub-msg" id="sub"></div>
       <div class="hint" id="hint"></div>
-      <pre id="dbg" style="position:absolute;left:8px;bottom:8px;margin:0;font:12px monospace;color:#9f9;text-shadow:0 1px 2px #000;display:none"></pre>`;
-    const ids = ['ph', 'ps', 'oh', 'os', 'ost', 'oname', 'clk', 'rnd', 'combo', 'tell', 'msg', 'sub', 'hint', 'dbg'];
+      <pre id="debugText" style="position:absolute;left:8px;bottom:8px;margin:0;font:12px monospace;color:#9f9;text-shadow:0 1px 2px #000;display:none"></pre>`;
+    const ids = ['ph', 'ps', 'oh', 'os', 'ost', 'oname', 'clk', 'rnd', 'combo', 'tell', 'msg', 'sub', 'hint', 'debugText'];
     this.el = Object.fromEntries(ids.map((i) => [i, $(this.root, '#' + i)]));
   }
 
@@ -33,7 +33,7 @@ export class Hud {
   setHint(s: string) { this.el.hint.textContent = s; }
   message(s: string, sec = 1.2) { this.el.msg.textContent = s; this.msgT = sec; }
   sub(s: string, sec = 1.2) { this.el.sub.textContent = s; this.subT = sec; }
-  debug(on: boolean, text = '') { this.el.dbg.style.display = on ? 'block' : 'none'; this.el.dbg.textContent = text; }
+  debug(on: boolean, text = '') { this.el.debugText.style.display = on ? 'block' : 'none'; this.el.debugText.textContent = text; }
 
   update(m: Match, dt: number, def: DefenseState) {
     const e = this.el;
